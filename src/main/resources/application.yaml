@@ -1,3 +1,16 @@
 spring:
+  jpa:
+    show-sql: true
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+  datasource:
+    # TODO: Move to .env
+    url: jdbc:postgresql://localhost:5432/database
+    username: admin
+    password: secret
+    driver-class-name: org.postgresql.Driver
   application:
     name: order_manager
+server:
+  port: 9090
