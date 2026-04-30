@@ -1,0 +1,25 @@
+name: Modul 295 Setup
+services:
+  postgres:
+    image: postgres
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: "admin"
+      POSTGRES_PASSWORD: "secret"
+      POSTGRES_DB: "database"
+    volumes:
+      - pgdata:/var/lib/postgresql
+
+  keycloak:
+    ports:
+      - 127.0.0.1:8080:8080
+    environment:
+      - KC_BOOTSTRAP_ADMIN_USERNAME=admin
+      - KC_BOOTSTRAP_ADMIN_PASSWORD=admin
+    image: quay.io/keycloak/keycloak:26.6.1
+    command: start-dev
+
+volumes:
+  pgdata:
