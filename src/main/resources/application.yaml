@@ -12,5 +12,10 @@ spring:
     driver-class-name: org.postgresql.Driver
   application:
     name: order_manager
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8080/realms/order_manager
 server:
   port: 9090
