@@ -1,0 +1,52 @@
+users
+  id serial pk
+  keycloak_id text
+  created_at timestamp=`now()`
+  updated_at timestamp=`now()`
+
+places
+  id serial pk
+  name text
+  post_code char(4)
+  canton text
+
+contacts
+  id serial pk
+  firstname text
+  lastname text
+  email text
+  phone text
+  street text
+  place_id int -> places(id)
+  created_by int -> users(id)
+  created_at timestamp=`now()`
+  updated_at timestamp=`now()`
+
+orders
+  id serial pk
+  name text
+  description text
+  status status(open, in_progress, finished, cancelled)
+  start_date date
+  end_date date
+  priority priority(low, medium, high)
+  category int nullable -> categories(id)
+  contact_id int -> contacts(id)
+  created_by int -> users(id)
+  created_at timestamp=`now()`
+  updated_at timestamp=`now()`
+
+categories
+  id serial pk
+  name text
+  description text nullable
+
+order_positions
+  id serial pk
+  name text
+  description text nullable
+  amount int
+  price numeric(10, 2)
+  order_id int -> orders(id)
+  created_at timestamp=`now()`
+  updated_at timestamp=`now()`
