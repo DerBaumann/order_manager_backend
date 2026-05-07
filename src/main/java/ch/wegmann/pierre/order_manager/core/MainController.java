@@ -1,8 +1,5 @@
 package ch.wegmann.pierre.order_manager.core;
 
-import ch.wegmann.pierre.order_manager.security.Roles;
-import io.swagger.v3.oas.annotations.security.SecurityRequirement;
-import jakarta.annotation.security.RolesAllowed;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

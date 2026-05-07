@@ -30,16 +30,11 @@ orders
   start_date date
   end_date date
   priority priority(low, medium, high)
-  category int nullable -> categories(id)
+  category text
   contact_id int -> contacts(id)
   created_by int -> users(id)
   created_at timestamp=`now()`
   updated_at timestamp=`now()`
-
-categories
-  id serial pk
-  name text
-  description text nullable
 
 order_positions
   id serial pk
