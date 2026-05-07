@@ -1,7 +1,6 @@
 package ch.wegmann.pierre.order_manager.place;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Size;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
