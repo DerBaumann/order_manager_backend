@@ -1,5 +1,6 @@
 package ch.wegmann.pierre.order_manager.place;
 
+import ch.wegmann.pierre.order_manager.core.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +16,9 @@ public class PlaceService {
         return placeRepository.findAll();
     }
 
-    public Optional<Place> find(long id) {
-        return placeRepository.findById(id);
+    public Place find(Long id) {
+        return placeRepository
+            .findById(id)
+            .orElseThrow(() -> new EntityNotFoundException(id, Place.class));
     }
 }

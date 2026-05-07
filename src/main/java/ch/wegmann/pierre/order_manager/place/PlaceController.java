@@ -23,13 +23,9 @@ public class PlaceController {
         return placeService.findAll();
     }
 
-    // TODO: Cleaner solution to handle missing value
     @GetMapping("/{id}")
     @RolesAllowed({Roles.Read, Roles.Update, Roles.Admin})
-    public ResponseEntity<Place> findOne(@PathVariable int id) {
-        return placeService
-                .find(id)
-                .map(place -> new ResponseEntity(place, HttpStatus.OK))
-                .orElseGet(() -> new ResponseEntity<>((Object) null, HttpStatus.NOT_FOUND));
+    public @ResponseBody Place findOne(@PathVariable long id) {
+        return placeService.find(id);
     }
 }
