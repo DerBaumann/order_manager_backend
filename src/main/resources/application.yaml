@@ -6,7 +6,7 @@ spring:
       ddl-auto: update
   datasource:
     # TODO: Move to .env
-    url: jdbc:postgresql://localhost:5432/database
+    url: jdbc:postgresql://localhost:5432/order_manager
     username: admin
     password: secret
     driver-class-name: org.postgresql.Driver
