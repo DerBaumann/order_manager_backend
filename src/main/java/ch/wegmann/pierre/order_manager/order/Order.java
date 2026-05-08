@@ -1,6 +1,7 @@
 package ch.wegmann.pierre.order_manager.order;
 
 import ch.wegmann.pierre.order_manager.contact.Contact;
+import ch.wegmann.pierre.order_manager.order_position.OrderPosition;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,6 +12,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.Instant;
 import java.time.LocalDate;
+import java.util.List;
 
 /*
 orders
@@ -38,7 +40,6 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // TODO: Add fields
     @Column(nullable = false)
     @NonNull
     private String name;
@@ -68,6 +69,11 @@ public class Order {
     @Column(nullable = false)
     @NonNull
     private String category;
+
+    @OneToMany
+    @JoinColumn(name = "order_id")
+    @NonNull
+    private List<OrderPosition> positions;
 
     @ManyToOne
     @JoinColumn(name = "contact_id", nullable = false)

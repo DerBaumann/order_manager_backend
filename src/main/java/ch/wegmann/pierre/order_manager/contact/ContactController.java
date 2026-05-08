@@ -43,7 +43,7 @@ public class ContactController {
     }
 
     @DeleteMapping("/{id}")
-    @RolesAllowed({Roles.Update, Roles.Admin})
+    @RolesAllowed({Roles.Admin})
     public @ResponseBody Contact destroy(@PathVariable Long id) {
         return contactService.delete(id);
     }

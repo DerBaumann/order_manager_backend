@@ -1,5 +1,6 @@
 package ch.wegmann.pierre.order_manager.order;
 
+import ch.wegmann.pierre.order_manager.order_position.OrderPositionService;
 import ch.wegmann.pierre.order_manager.security.Roles;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.annotation.security.RolesAllowed;
@@ -43,7 +44,7 @@ public class OrderController {
     }
 
     @DeleteMapping("/{id}")
-    @RolesAllowed({Roles.Update, Roles.Admin})
+    @RolesAllowed({Roles.Admin})
     public @ResponseBody Order destroy(@PathVariable Long id) {
         return orderService.delete(id);
     }
