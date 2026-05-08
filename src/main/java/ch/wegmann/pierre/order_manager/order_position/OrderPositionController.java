@@ -5,7 +5,6 @@ import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.annotation.security.RolesAllowed;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.resource.ResourceUrlProvider;
 
 @RestController
 @RequestMapping("/api/orders/{orderId}/positions")
@@ -22,7 +21,7 @@ public class OrderPositionController {
 
     @PutMapping("/{id}")
     @RolesAllowed({Roles.Update, Roles.Admin})
-    public @ResponseBody OrderPosition update(@PathVariable Long id, @RequestBody OrderPosition orderPosition) {
+    public @ResponseBody OrderPosition update(@PathVariable Long id, @RequestBody OrderPositionRequestDTO orderPosition) {
         return orderPositionService.update(id, orderPosition);
     }
 

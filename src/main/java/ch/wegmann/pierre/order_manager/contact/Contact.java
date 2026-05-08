@@ -8,20 +8,6 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.Instant;
 
-/*
-contacts
-  id serial pk
-  firstname text
-  lastname text
-  email text
-  phone text
-  street text
-  place_id int -> places(id)
-  created_by int -> users(id)
-  created_at timestamp=`now()`
-  updated_at timestamp=`now()`
-*/
-
 @Data
 @NoArgsConstructor
 @RequiredArgsConstructor
@@ -56,10 +42,6 @@ public class Contact {
     @JoinColumn(name = "place_id", nullable = false)
     @NonNull
     private Place place;
-
-//    @ManyToOne
-//    @JoinColumn(name = "user_id", nullable = false)
-//    private User user;
 
     @CreationTimestamp
     private Instant createdAt;

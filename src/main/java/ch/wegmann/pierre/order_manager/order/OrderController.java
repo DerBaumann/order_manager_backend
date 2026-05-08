@@ -1,6 +1,5 @@
 package ch.wegmann.pierre.order_manager.order;
 
-import ch.wegmann.pierre.order_manager.order_position.OrderPositionService;
 import ch.wegmann.pierre.order_manager.security.Roles;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.annotation.security.RolesAllowed;
@@ -33,13 +32,13 @@ public class OrderController {
 
     @PostMapping("/")
     @RolesAllowed({Roles.Update, Roles.Admin})
-    public ResponseEntity<Order> store(@RequestBody @Valid Order order) {
+    public ResponseEntity<Order> store(@RequestBody @Valid OrderRequestDTO order) {
         return new ResponseEntity<>(orderService.create(order), HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
     @RolesAllowed({Roles.Update, Roles.Admin})
-    public @ResponseBody Order update(@RequestBody @Valid Order order, @PathVariable Long id) {
+    public @ResponseBody Order update(@RequestBody @Valid OrderRequestDTO order, @PathVariable Long id) {
         return orderService.update(id, order);
     }
 

@@ -14,22 +14,6 @@ import java.time.Instant;
 import java.time.LocalDate;
 import java.util.List;
 
-/*
-orders
-  id serial pk
-  name text
-  description text
-  status status(open, in_progress, finished, cancelled)
-  start_date date
-  end_date date
-  priority priority(low, medium, high)
-  category text
-  contact_id int -> contacts(id)
-  created_by int -> users(id)
-  created_at timestamp=`now()`
-  updated_at timestamp=`now()`
- */
-
 @Data
 @NoArgsConstructor
 @RequiredArgsConstructor
@@ -85,4 +69,22 @@ public class Order {
 
     @UpdateTimestamp
     private Instant updatedAt;
+
+    public static Order fromRequestDTO(OrderRequestDTO requestDTO, Contact contact) {
+        return new Order(
+            requestDTO.getName(),
+            requestDTO.getDescription(),
+            requestDTO.getStatus(),
+            requestDTO.getStartDate(),
+            requestDTO.getEndDate(),
+            requestDTO.getPriority(),
+            requestDTO.getCategory(),
+            requestDTO
+                .getPositions()
+                .stream()
+                .map(OrderPosition::fromRequestDTO)
+                .toList(),
+            contact
+        );
+    }
 }

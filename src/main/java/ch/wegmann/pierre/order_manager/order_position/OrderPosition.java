@@ -10,18 +10,6 @@ import org.hibernate.annotations.UpdateTimestamp;
 import java.math.BigDecimal;
 import java.time.Instant;
 
-/*
-order_positions
-  id serial pk
-  name text
-  description text nullable
-  amount int
-  price numeric(10, 2)
-  order_id int -> orders(id)
-  created_at timestamp=`now()`
-  updated_at timestamp=`now()`
- */
-
 @Data
 @NoArgsConstructor
 @Entity
@@ -62,5 +50,14 @@ public class OrderPosition {
         this.description = description;
         this.amount = amount;
         this.price = price;
+    }
+
+    public static OrderPosition fromRequestDTO(OrderPositionRequestDTO requestDTO) {
+        return new OrderPosition(
+            requestDTO.getName(),
+            requestDTO.getDescription(),
+            requestDTO.getAmount(),
+            requestDTO.getPrice()
+        );
     }
 }
