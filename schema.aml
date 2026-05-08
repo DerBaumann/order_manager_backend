@@ -1,9 +1,3 @@
-users
-  id serial pk
-  keycloak_id text
-  created_at timestamp=`now()`
-  updated_at timestamp=`now()`
-
 places
   id serial pk
   name text
@@ -18,7 +12,6 @@ contacts
   phone text
   street text
   place_id int -> places(id)
-  created_by int -> users(id)
   created_at timestamp=`now()`
   updated_at timestamp=`now()`
 
@@ -32,7 +25,6 @@ orders
   priority priority(low, medium, high)
   category text
   contact_id int -> contacts(id)
-  created_by int -> users(id)
   created_at timestamp=`now()`
   updated_at timestamp=`now()`
 
