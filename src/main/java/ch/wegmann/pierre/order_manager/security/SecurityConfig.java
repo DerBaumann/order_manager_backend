@@ -29,7 +29,7 @@ public class SecurityConfig {
     };
 
 //    @Value("${spring.application.name}")
-    private String appName = "order_manager_api";
+    private String appName = "order_manager";
 
     @Bean
     protected SecurityFilterChain configure(HttpSecurity http) throws Exception {

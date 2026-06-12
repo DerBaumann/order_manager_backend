@@ -1,0 +1,30 @@
+{
+  "name": "Office IT Equipment Order",
+  "description": "Order for new laptops and accessories for the development team",
+  "status": "OPEN",
+  "startDate": "2026-06-15",
+  "endDate": "2026-07-01",
+  "priority": "HIGH",
+  "category": "IT_EQUIPMENT",
+  "positions": [
+    {
+      "name": "Laptop",
+      "description": "Dell XPS 15 or equivalent",
+      "amount": 5,
+      "price": 1899.99
+    },
+    {
+      "name": "Docking Station",
+      "description": "USB-C universal docking station",
+      "amount": 5,
+      "price": 249.50
+    },
+    {
+      "name": "External Monitor",
+      "description": "27-inch 4K monitor",
+      "amount": 5,
+      "price": 399.00
+    }
+  ],
+  "contactId": 1
+}

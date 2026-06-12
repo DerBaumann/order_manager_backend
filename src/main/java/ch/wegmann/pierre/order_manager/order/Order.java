@@ -70,7 +70,7 @@ public class Order {
     @UpdateTimestamp
     private Instant updatedAt;
 
-    public static Order fromRequestDTO(OrderRequestDTO requestDTO, Contact contact) {
+    public static Order fromRequestDTO(OrderRequestDTO requestDTO, Contact contact, List<OrderPosition> positions) {
         return new Order(
             requestDTO.getName(),
             requestDTO.getDescription(),
@@ -79,11 +79,7 @@ public class Order {
             requestDTO.getEndDate(),
             requestDTO.getPriority(),
             requestDTO.getCategory(),
-            requestDTO
-                .getPositions()
-                .stream()
-                .map(OrderPosition::fromRequestDTO)
-                .toList(),
+            positions,
             contact
         );
     }
